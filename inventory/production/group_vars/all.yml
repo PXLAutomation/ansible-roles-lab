@@ -1,4 +1,4 @@
 ---
 # Variables for all production hosts
 env: production
-ansible_user: deploy
+ansible_user: vagrant
