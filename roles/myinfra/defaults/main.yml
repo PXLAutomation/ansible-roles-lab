@@ -1,7 +1,7 @@
 ---
 # Default variables for myinfra role
 # Web server variables
-webserver_port: 80
+webserver_port: 8080
 document_root: /var/www/html
 
 # Database variables
@@ -12,7 +12,6 @@ db_backup_enabled: false
 common_packages:
   - vim
   - curl
-  - htop
   - git
   - zip
   - unzip
@@ -21,9 +20,9 @@ common_packages:
 webserver_packages:
   - nginx
   - php-fpm
-  - php-mysql
+  - php-mysqlnd
 
 # Database packages
 database_packages:
-  - mysql-server
-  - python3-pymysql
+  - mariadb-server
+  - python3-PyMySQL

@@ -10,9 +10,8 @@
 - name: Configure database server
   template:
     src: my.cnf.j2
-    dest: /etc/mysql/my.cnf
+    dest: /etc/my.cnf.d/server.cnf
   notify: Restart database service
-  tags: config
 
 - name: Setup database backup
   cron:

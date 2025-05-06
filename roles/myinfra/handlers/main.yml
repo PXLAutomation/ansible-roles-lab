@@ -7,5 +7,5 @@
 
 - name: Restart database service
   service:
-    name: mysql
+    name: mariadb
     state: restarted
