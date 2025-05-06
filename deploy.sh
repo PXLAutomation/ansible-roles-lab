@@ -19,8 +19,8 @@ vagrant up
 ssh-keygen -R [127.0.0.1]:2222
 
 # Initial run of playbook
-echo -e "\n${YELLOW}Running playbook...${NC}"
-ansible-playbook -i inventory/production/hosts playbook.yml
+echo -e "\n${YELLOW}Running site.yml playbook...${NC}"
+ansible-playbook -i inventory/production/hosts site.yml
 PLAYBOOK_EXIT=$?
 
 if [ $PLAYBOOK_EXIT -ne 0 ]; then
