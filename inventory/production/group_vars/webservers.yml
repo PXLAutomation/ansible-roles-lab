@@ -1,0 +1,4 @@
+---
+# Variables for production web servers
+webserver_port: 80
+document_root: /var/www/html

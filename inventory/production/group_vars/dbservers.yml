@@ -1,0 +1,4 @@
+---
+# Variables for production database servers
+db_port: 3306
+db_backup_enabled: true

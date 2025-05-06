@@ -1,0 +1,11 @@
+---
+# Handlers file for myinfra
+- name: Restart web service
+  service:
+    name: nginx
+    state: restarted
+
+- name: Restart database service
+  service:
+    name: mysql
+    state: restarted

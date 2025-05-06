@@ -1,0 +1,19 @@
+server {
+    listen {{ webserver_port }};
+    server_name {{ ansible_hostname }};
+
+    root {{ document_root }};
+    index index.html index.php;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+    }
+
+    access_log /var/log/nginx/{{ ansible_hostname }}_access.log;
+    error_log /var/log/nginx/{{ ansible_hostname }}_error.log;
+}

@@ -1,0 +1,29 @@
+---
+# Default variables for myinfra role
+# Web server variables
+webserver_port: 80
+document_root: /var/www/html
+
+# Database variables
+db_port: 3306
+db_backup_enabled: false
+
+# Common packages for all servers
+common_packages:
+  - vim
+  - curl
+  - htop
+  - git
+  - zip
+  - unzip
+
+# Web server packages
+webserver_packages:
+  - nginx
+  - php-fpm
+  - php-mysql
+
+# Database packages
+database_packages:
+  - mysql-server
+  - python3-pymysql

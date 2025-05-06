@@ -1,0 +1,5 @@
+---
+# External role dependencies
+# Install with: ansible-galaxy install -r roles/requirements.yml
+# - name: geerlingguy.nginx
+#   version: 2.8.0

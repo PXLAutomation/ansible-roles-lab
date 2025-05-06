@@ -1,0 +1,12 @@
+---
+# Main tasks file for myinfra role
+- name: Include web server tasks
+  include_tasks: webserver.yml
+  when: "'webservers' in group_names"
+
+- name: Include database tasks
+  include_tasks: database.yml
+  when: "'dbservers' in group_names"
+
+- name: Include common tasks
+  include_tasks: common.yml

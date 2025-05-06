@@ -1,0 +1,4 @@
+---
+# Variables for all staging hosts
+env: staging
+ansible_user: deploy

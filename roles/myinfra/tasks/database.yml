@@ -1,0 +1,24 @@
+---
+# Database server specific tasks
+- name: Install database packages
+  package:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ database_packages }}"
+  tags: install
+
+- name: Configure database server
+  template:
+    src: my.cnf.j2
+    dest: /etc/mysql/my.cnf
+  notify: Restart database service
+  tags: config
+
+- name: Setup database backup
+  cron:
+    name: "Database backup"
+    minute: "0"
+    hour: "3"
+    job: "/usr/local/bin/backup-db.sh"
+  when: db_backup_enabled | bool
+  tags: backup

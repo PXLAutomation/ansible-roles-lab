@@ -1,0 +1,37 @@
+---
+# Firewall configuration
+- name: Install UFW
+  package:
+    name: ufw
+    state: present
+  tags: firewall
+
+- name: Allow SSH
+  ufw:
+    rule: allow
+    port: "22"
+    proto: tcp
+  tags: firewall
+
+- name: Allow web traffic
+  ufw:
+    rule: allow
+    port: "{{ webserver_port }}"
+    proto: tcp
+  when: "'webservers' in group_names"
+  tags: firewall
+
+- name: Allow database traffic from web servers
+  ufw:
+    rule: allow
+    port: "{{ db_port }}"
+    proto: tcp
+    from_ip: "{{ hostvars[item]['ansible_host'] }}"
+  loop: "{{ groups['webservers'] }}"
+  when: "'dbservers' in group_names"
+  tags: firewall
+
+- name: Enable UFW
+  ufw:
+    state: enabled
+  tags: firewall

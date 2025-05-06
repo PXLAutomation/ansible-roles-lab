@@ -1,0 +1,7 @@
+---
+# Main playbook that ties everything together
+- name: Include webserver configuration
+  import_playbook: webservers.yml
+
+- name: Include database configuration
+  import_playbook: dbservers.yml

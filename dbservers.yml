@@ -1,0 +1,7 @@
+---
+- name: Configure database servers
+  hosts: dbservers
+  become: true
+  
+  roles:
+    - { role: myinfra, vars: { is_database: true } }

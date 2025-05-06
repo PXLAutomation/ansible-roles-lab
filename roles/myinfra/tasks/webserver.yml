@@ -1,0 +1,28 @@
+---
+# Web server specific tasks
+- name: Install web server packages
+  package:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ webserver_packages }}"
+  tags: install
+
+- name: Create document root
+  file:
+    path: "{{ document_root }}"
+    state: directory
+    mode: '0755'
+  tags: config
+
+- name: Deploy web server configuration
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/sites-available/default
+  notify: Restart web service
+  tags: config
+
+- name: Deploy test page
+  template:
+    src: index.html.j2
+    dest: "{{ document_root }}/index.html"
+  tags: deploy
